@@ -1,0 +1,23 @@
+<%- include("partials/navbar.ejs") %>
+<main class="Task-column">
+    <div class="taskbar-name box heading">
+        <h1><%= title %></h1>
+    </div>
+    <div class="Task-all box">
+        <div class="task-item">
+           <% for (let task of tasklist) { %>
+                <div class="task">
+                    <input type="checkbox">
+                    <p><%= task %></p>
+                </div>
+            <% } %>
+            <form class="task-item nw" action="/work" method="post">
+                <input type="text" name="newItem" placeholder="New Task" autocomplete="off">
+                <button type="submit" name="list" >+</button>
+            </form>
+            <form class="task-item ro" action="/work/reset" method="post">
+                <button type="submit" name="reset" onclick="return confirm('All your tasks will be cleared')">Reset All</button>
+            </form>
+        </div>
+    </div>
+</main>
